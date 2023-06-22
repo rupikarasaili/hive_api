@@ -13,7 +13,7 @@ final courseViewModelProvider =
 class CourseViewModel extends StateNotifier<CourseState> {
   final CourseUseCase courseUsecase;
   CourseViewModel(this.courseUsecase) : super(CourseState.initial()) {
-    //  getAllCourses();
+    getAllCourses();
   }
 
   Future<void> addCourse(CourseEntity course) async {
@@ -32,7 +32,7 @@ class CourseViewModel extends StateNotifier<CourseState> {
 
     data.fold(
       (l) => state = state.copyWith(isLoading: false, error: l.error),
-      (r) => state = state.copyWith(isLoading: false, courses: r),
+      (r) => state = state.copyWith(isLoading: false, error: null, courses: r),
     );
   }
 }

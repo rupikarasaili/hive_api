@@ -10,6 +10,7 @@ class StudentEntity {
   final List<CourseEntity> courses;
   final String username;
   final String password;
+  final String? image;
 
   StudentEntity({
     this.id,
@@ -20,7 +21,6 @@ class StudentEntity {
     required this.courses,
     required this.username,
     required this.password,
+    this.image,
   });
 }
-
-

@@ -12,7 +12,7 @@ class BatchViewModel extends StateNotifier<BatchState> {
   final BatchUseCase batchUseCase;
 
   BatchViewModel(this.batchUseCase) : super(BatchState.initial()) {
-    //  getAllBatches();
+     getAllBatches();
   }
 
   addBatch(BatchEntity batch) async {
