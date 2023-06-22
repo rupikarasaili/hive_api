@@ -24,13 +24,22 @@ class AuthLocalRepository implements IAuthRepository {
   }
 
   @override
-  Future<Either<Failure, bool>> registerStudent(StudentEntity student) {
-    return _authLocalDataSource.registerStudent(student);
+  Future<Either<Failure, bool>> registerStudent(
+      {required String fname,
+      required String lname,
+      String? image,
+      required String batch,
+      required List<String> courses,
+      required String phone,
+      required String username,
+      required String password}) {
+    // TODO: implement registerStudent
+    throw UnimplementedError();
   }
 
   @override
-  Future<Either<Failure, String>> uploadProfilePicture(File file) async {
-    // return _authLocalDataSource.uploadProfilePicture(file);
-    return const Right("");
+  Future<Either<Failure, String>> uploadProfilePicture(File file) {
+    // TODO: implement uploadProfilePicture
+    throw UnimplementedError();
   }
 }

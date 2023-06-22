@@ -10,9 +10,8 @@ import 'package:hive_and_api_for_class/features/batch/domain/entity/batch_entity
 
 final batchRemoteDataSourceProvider = Provider(
   (ref) => BatchRemoteDataSource(
-    dio: ref.read(httpServiceProvider),
-    batchApiModel: ref.read(batchApiModelProvider),
-  ),
+      dio: ref.read(httpServiceProvider),
+      batchApiModel: ref.read(batchApiModelProvider)),
 );
 
 class BatchRemoteDataSource {
@@ -24,6 +23,7 @@ class BatchRemoteDataSource {
     required this.batchApiModel,
   });
 
+  // Add Batch
   Future<Either<Failure, bool>> addBatch(BatchEntity batch) async {
     try {
       var response = await dio.post(
@@ -50,14 +50,15 @@ class BatchRemoteDataSource {
     }
   }
 
+// Get All Batch
   Future<Either<Failure, List<BatchEntity>>> getAllBatches() async {
     try {
       var response = await dio.get(ApiEndpoints.getAllBatch);
       if (response.statusCode == 200) {
         // OR
         // 2nd way
-        GetAllBatchDTO batchAddDTO = GetAllBatchDTO.fromJson(response.data);
-        return Right(batchApiModel.toEntityList(batchAddDTO.data));
+        GetAllBatchDTO getAllBatchDTO = GetAllBatchDTO.fromJson(response.data);
+        return Right(batchApiModel.toEntityList(getAllBatchDTO.data));
       } else {
         return Left(
           Failure(

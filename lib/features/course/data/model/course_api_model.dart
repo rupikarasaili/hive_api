@@ -44,6 +44,6 @@ class CourseApiModel {
   List<CourseEntity> toEntityList(List<CourseApiModel> models) =>
       models.map((model) => model.toEntity()).toList();
 
- 
-  
+  @override
+  List<Object?> get props => [courseId, courseName];
 }
